@@ -1,8 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { mockAuthentication } from '../../../domain/test/mockAuthentication'
+import { mockAuthentication } from '@/domain/test/mockAuthentication'
 import faker from 'faker'
-import { HttpPostClientSpy } from '../../test/mockHttpClient'
-import { RemoteAuthentication } from './remoteAuthentication'
+import { HttpPostClientSpy } from '@/data/test/mockHttpClient'
+import { RemoteAuthentication } from '@/data/usecases/authentication/remoteAuthentication'
 
 type SutTypes = {
   sut: RemoteAuthentication
