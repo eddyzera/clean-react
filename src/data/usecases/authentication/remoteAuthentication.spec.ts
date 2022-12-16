@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { mockAuthentication } from '@/domain/test/mockAuthentication'
+import { mockAuccountModel, mockAuthentication } from '@/domain/test/mockAccount'
 import faker from 'faker'
 import { HttpPostClientSpy } from '@/data/test/mockHttpClient'
 import { RemoteAuthentication } from '@/data/usecases/authentication/remoteAuthentication'
@@ -75,5 +75,17 @@ describe('RemoteAuthentication', () => {
     const params = mockAuthentication()
     const promise = sut.auth(params)
     await expect(promise).rejects.toThrow(new UnexpectedError())
+  })
+
+  it('Should return an AccountModel if HttpPostClient returns 200', async () => {
+    const { sut, httpPostClientSpy } = makeSut()
+    const httpResult = mockAuccountModel()
+    httpPostClientSpy.response = {
+      statusCode: HttpStatusCode.ok,
+      body: httpResult
+    }
+    const params = mockAuthentication()
+    const account = await sut.auth(params)
+    expect(account).toEqual(httpResult)
   })
 })
