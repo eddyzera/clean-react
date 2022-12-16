@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { mockAuccountModel, mockAuthentication } from '@/domain/test/mockAccount'
 import faker from 'faker'
-import { HttpPostClientSpy } from '@/data/test/mockHttpClient'
+import { mockAuccountModel, mockAuthentication } from '@/domain/test'
+import { HttpPostClientSpy } from '@/data/test'
 import { RemoteAuthentication } from '@/data/usecases/authentication/remoteAuthentication'
-import { InvalidCredentialsError } from '@/domain/errors/invalidCredentialsError'
-import { HttpStatusCode } from '@/data/protocols/http/httpResponse'
-import { UnexpectedError } from '@/domain/errors/unexpectedError'
-import { AuthenticationParams } from '@/domain/usecases/authentication'
-import { AccountModel } from '@/domain/models/accountModel'
+import { InvalidCredentialsError, UnexpectedError } from '@/domain/errors'
+import { HttpStatusCode } from '@/data/protocols/http'
+import { AuthenticationParams } from '@/domain/usecases'
+import { AccountModel } from '@/domain/models'
 
 type SutTypes = {
   sut: RemoteAuthentication
